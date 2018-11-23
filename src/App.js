@@ -46,10 +46,17 @@ class App extends Component {
     ]
   }
 
+  removeItem = (gearItem) => {
+    this.setState((state) => ({
+      gearList: state.gearList.filter((item) => item.id !== gearItem.id)
+    }))
+
+  }
+
   render() {
     return (
       <div>
-        <ListGear gearList={this.state.gearList} />  
+        <ListGear onRemoveItem = {this.removeItem} gearList={this.state.gearList} />  
       </div>
     )
   }
