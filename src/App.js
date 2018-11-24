@@ -56,7 +56,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <ListGear onRemoveItem = {this.removeItem} gearList={this.state.gearList} />  
+        <ListGear 
+          onRemoveItem = {this.removeItem} 
+          gearList={this.state.gearList}
+        />  
       </div>
     )
   }
