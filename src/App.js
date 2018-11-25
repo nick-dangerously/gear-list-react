@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import ListGear from './ListGear'
-import CreateGearItem from './CreateGearItem'
-import * as GearListAPI from './utils/GearListAPI'
+import { Route } from 'react-router-dom'; 
+import ListGear from './ListGear';
+import CreateGearItem from './CreateGearItem';
+import * as GearListAPI from './utils/GearListAPI';
+
 
 class App extends Component {
   state = {
-    screen: 'list', // list,create
     gearList: []
   }
 
@@ -26,18 +27,13 @@ class App extends Component {
   render() {
     return (
       <div className='app'>
-        {this.state.screen === 'list' && (
-         <ListGear 
-         gearList={this.state.gearList}
-         onRemoveItem = {this.removeItem}
-         onNavigate={() => {
-           this.setState({ screen:'create' })
-         }}
-       /> 
-        )}
-        {this.state.screen === 'create' && (
-          <CreateGearItem/>
-        )}
+        <Route exact path='/' render={ () => (
+          <ListGear 
+          gearList={this.state.gearList}
+          onRemoveItem = {this.removeItem}
+          />
+        )}/>
+        <Route path='/create' component={CreateGearItem}/>
       </div>
     )
   }
