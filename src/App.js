@@ -24,6 +24,14 @@ class App extends Component {
     GearListAPI.remove(gearItem)    
   }
 
+  createGearItem(gearItem) {
+    GearListAPI.create(gearItem).then(gearItem => {
+      this.setState(state => ({
+        gearList: state.gearList.concat( [gearItem] )
+      }))
+    })
+  }
+
   render() {
     return (
       <div className='app'>
@@ -33,7 +41,14 @@ class App extends Component {
           onRemoveItem = {this.removeItem}
           />
         )}/>
-        <Route path='/create' component={CreateGearItem}/>
+        <Route path='/create' render={({ history }) => (
+          <CreateGearItem
+            onCreateGearItem={(gearItem) => {
+              this.createGearItem(gearItem)
+              history.push('/')
+            }}
+          />
+        )}/>
       </div>
     )
   }

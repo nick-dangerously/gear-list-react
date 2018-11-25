@@ -37,10 +37,10 @@ class ListGear extends Component {
 		showingGearItems.sort(sortBy('weight'))
 
 		return (
-			<div className='list-contacts'>
-				<div className='list-contacts-top'>
+			<div className='list-gear'>
+				<div className='list-gear-top'>
 					<input 
-						className='search-contacts'
+						className='search-gear'
 						type='text'
 						placeholder='Search gear'
 						value={this.state.query}
@@ -49,28 +49,30 @@ class ListGear extends Component {
 					<Link 
 						to='/create'
 						className='add-gear'
-					>Add Contact</Link>
+					>Add Gear</Link>
 				</div>
 
-				{/* Returns exp1 if false, otherwise returns exp2 */}
 				{showingGearItems.length !== gearList.length && (
-					<div className='showing-contacts'>
+					<div className='showing-gear'>
 						<span>Now Showing {showingGearItems.length} of {gearList.length}</span>
 						<button onClick={this.clearQUery}>Show all</button>
 					</div>
 				)}
 
-				<ol className='contact-list'>
+				<ol className='gear-list'>
 				{showingGearItems.map((gearItem) => (
-					<li key={gearItem.id} className='contact-list-item'>
-						<div className='contact-avatar' style={{
+					<li key={gearItem.id} className='gear-list-item'>
+						<div className='gear-avatar' style={{
 							backgroundImage:`url(${gearItem.avatarURL})`
 						}}/>
-						<div className='contact-details'>
+						<div className='gear-details'>
 							<p>{gearItem.name}</p>
 							<p>{gearItem.weight} oz.</p>
+							<p>{gearItem.avatarURL}</p>
+							<p>{gearItem.id}</p>
+							{console.log(gearItem)}
 						</div>
-						<button onClick={() => onRemoveItem(gearItem)} className='contact-remove'>
+						<button onClick={() => onRemoveItem(gearItem)} className='gear-remove'>
 							Remove
 						</button>
 					</li>
