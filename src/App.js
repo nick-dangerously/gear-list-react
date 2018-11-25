@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import ListGear from './ListGear'
+import CreateGearItem from './CreateGearItem'
 import * as GearListAPI from './utils/GearListAPI'
 
 class App extends Component {
   state = {
+    screen: 'list', // list,create
     gearList: []
   }
 
@@ -18,15 +20,24 @@ class App extends Component {
       gearList: state.gearList.filter((item) => item.id !== gearItem.id)
     }))
 
+    GearListAPI.remove(gearItem)    
   }
 
   render() {
     return (
-      <div>
-        <ListGear 
-          onRemoveItem = {this.removeItem} 
-          gearList={this.state.gearList}
-        />  
+      <div className='app'>
+        {this.state.screen === 'list' && (
+         <ListGear 
+         gearList={this.state.gearList}
+         onRemoveItem = {this.removeItem}
+         onNavigate={() => {
+           this.setState({ screen:'create' })
+         }}
+       /> 
+        )}
+        {this.state.screen === 'create' && (
+          <CreateGearItem/>
+        )}
       </div>
     )
   }

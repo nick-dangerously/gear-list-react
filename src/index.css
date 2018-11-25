@@ -99,11 +99,11 @@ html {
     outline: none;
   }
   
-  .add-contact {
+  .add-gear {
     display: block;
     width: 73px;
     background: white;
-    background-image: url('./icons/person-add.svg');
+    background-image: url('./icons/gear-add.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 28px;

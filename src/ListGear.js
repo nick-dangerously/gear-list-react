@@ -45,6 +45,11 @@ class ListGear extends Component {
 						value={this.state.query}
 						onChange={(event) => this.updateQuery(event.target.value)}
 					/>
+					<a 
+						href='#create'
+						onClick={this.props.onNavigate}
+						className='add-gear'
+					>Add Contact</a>
 				</div>
 
 				{/* Returns exp1 if false, otherwise returns exp2 */}
