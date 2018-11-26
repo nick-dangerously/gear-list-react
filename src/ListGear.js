@@ -68,9 +68,6 @@ class ListGear extends Component {
 						<div className='gear-details'>
 							<p>{gearItem.name}</p>
 							<p>{gearItem.weight} oz.</p>
-							<p>{gearItem.avatarURL}</p>
-							<p>{gearItem.id}</p>
-							{console.log(gearItem)}
 						</div>
 						<button onClick={() => onRemoveItem(gearItem)} className='gear-remove'>
 							Remove
